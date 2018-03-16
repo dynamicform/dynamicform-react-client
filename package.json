@@ -1,21 +1,28 @@
 {
-  "name": "dynamicform-react-client",
-  "version": "1.0.0",
-  "repository": "https://github.com/dynamicform/dynamicform-react-client.git",
-  "author": "Nick Gu",
-  "license": "MIT",
-  "description": "react + redux render",
+  "name": "dynamicform-render",
+  "version": "1.6.2",
+  "description": "Form Render",
   "main": "lib/index.js",
   "scripts": {
     "dev": "webpack-dev-server",
     "lint": "eslint src",
     "build": "npm run build:lib",
+    "build:lib": "babel src --out-dir lib",
+    "build:umd": "webpack --config webpack.config.prod.babel.js --display-modules",
+    "build:umd:min": "webpack --config webpack.config.prod.babel.js",
     "test": "mocha --compilers js:babel-core/register --require ignore-styles ./test/*.test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "http://172.16.4.213/dynamicform/dynamicform-render"
+  },
+  "author": "Nick Gu",
+  "license": "MIT",
   "dependencies": {
     "antd": "^2.9.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
@@ -57,6 +64,6 @@
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.17.0",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.4.2"
   }
 }
