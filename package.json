@@ -1,29 +1,29 @@
 {
-  "name": "dynamicform-render",
-  "version": "1.6.2",
-  "description": "Form Render",
+  "name": "dynamicform-react-client",
+  "version": "1.0.3",
+  "repository": "https://github.com/dynamicform/dynamicform-react-client.git",
+  "author": "Nick Gu",
+  "license": "MIT",
+  "description": "react + redux render",
   "main": "lib/index.js",
   "scripts": {
-    "dev": "webpack-dev-server  --host 0.0.0.0",
+    "dev": "webpack-dev-server",
     "lint": "eslint src",
     "build": "npm run build:lib",
     "build:lib": "babel src --out-dir lib",
-    "build:umd": "webpack --config webpack.config.prod.babel.js --display-modules",
-    "build:umd:min": "webpack --config webpack.config.prod.babel.js",
+    "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register --require ignore-styles ./test/*.test.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "http://172.16.4.213/dynamicform/dynamicform-render"
-  },
-  "author": "Nick Gu",
-  "license": "MIT",
   "dependencies": {
     "antd": "^2.9.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "prop-types": "^15.5.10",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "redux": "^3.6.0",
+    "react-redux": "^5.0.3",
+    "redux-thunk": "^2.2.0",
+    "css-loader": "^0.28.1",
+    "style-loader": "^0.17.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
@@ -38,7 +38,6 @@
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.0",
-    "css-loader": "^0.28.1",
     "enzyme": "^2.9.1",
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^6.10.3",
@@ -55,15 +54,11 @@
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-redux": "^5.0.3",
     "react-router-dom": "^4.0.0",
     "react-router-redux": "^5.0.0-alpha.6",
-    "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
     "redux-mock-store": "^1.2.3",
-    "redux-thunk": "^2.2.0",
-    "style-loader": "^0.17.0",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.7.1"
   }
 }

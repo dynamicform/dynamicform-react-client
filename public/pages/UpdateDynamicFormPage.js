@@ -10,8 +10,6 @@ export default class UpdateDynamicFormPage extends React.Component{
     onSuccess(){
 
     }
-//${this.props.match && this.props.match.params.name}
-    //${this.props.match && this.props.match.params.id}
     render(){
         return(
             <div>
