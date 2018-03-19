@@ -4,7 +4,7 @@
   "description": "Form Render",
   "main": "lib/index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server  --host 0.0.0.0",
     "lint": "eslint src",
     "build": "npm run build:lib",
     "build:lib": "babel src --out-dir lib",
