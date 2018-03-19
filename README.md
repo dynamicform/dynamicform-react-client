@@ -1,21 +1,19 @@
-# Dynamicform React Client Render
+## 动态表单
 
+用于读取表单定义，然后渲染组件
 
+## 私服地址
 
-[![npm](https://img.shields.io/npm/v/dynamicform-react-client.svg)](http://npm.im/dynamicform-react-client)
-[![travis](https://travis-ci.org/dynamicform/dynamicform-react-client.svg?branch=master)](https://travis-ci.org/dynamicform/dynamicform-react-client)
+http://nexus-dev.quarkfinance.com:8081/#browse/browse/components:npm-hosted
 
-## Overview of Dynamicform
+## Jenkins集成地址
 
-### Installation
+http://172.16.6.31:8080/job/dynamicform/job/dynamicform-render/
 
-> $ yarn install
+## dynamicform-render项目引用
+修改npm私服 执行命令：npm set registry http://nexus-dev.quarkfinance.com:8081/repository/npm-group/
 
+##安装
 
+* `npm install  dynamicform-render --save`;
 
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md)
-
-## License
-MIT
