@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="/ico/favicon.ico">-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/formElement.css" />
+    <title>inputNumber</title>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <h1>This is react client demo page!!!</h1>
+</div>
+
+<!-- nav -->
+<div class="navbar">
+    <ul class="nav-links-container">
+        <li><a class="active" href="">Introduce</a></li>
+        <li><a href="">Detailed</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="content">
+    <div class="content-limit">
+        <h1 class="title">inputNumber</h1>
+        <pre class="code">
+            <code>
+                <span>
+               {
+                    "type" : "inputNumber",
+                    "name" : "AmtRequire",
+                    "path" : "ApplicationInfo.AmtRequire",
+                    "label" : "借款金额",
+                    "textAfter" : "元",
+                    "defaultvalue" : 11,
+                    "min" : 1000,
+                    "max" : 2000，
+                    "hidden":false
+                    "disabled":false
+                    "rules" : [
+                        {
+                            "required" : true,
+                            "message" : "借款金额不能为空"
+                        }
+                    ] ,
+                    "target":"loanAppInfo.appTime1",
+                    "definitionMap" : {
+                        "default" : {
+                            "rules" : [
+                                {
+                                    "required" : true,
+                                    "pattern" : "/(^1[0-9][0-9][0-9](.[0-9]{1,2})?$)|(^1[0-9][0-9][0-9]$)/",
+                                    "message" : "必填, 金额输入范围为1000~2000,最多两位小数"
+                                }
+                            ]
+                        },
+                        "B" : {
+                            "rules" : [
+                                {
+                                    "required" : true,
+                                    "message" : "必填, 金额输入范围为2000~3000,最多两位小数",
+                                    "pattern" : "/(^2[0-9][0-9][0-9](.[0-9]{1,2})?$)|(^2[0-9][0-9][0-9]$)/"
+                                }
+                            ]
+                        }
+                    },
+                }
+                </span>
+           </code>
+        </pre>
+        <blockquote class="notes">
+            <p>type: 元素类型</p>
+            <p>name: instance name - 唯一</p>
+            <p>path: 数据结构名称</p>
+            <p>inputType: 输入框类型- 参考html input type</p>
+            <p>label: 输入框label</p>
+            <p>placeholder: 输入框placeholder</p>
+            <p>textAfter: 文本框后置文字</p>
+            <p>defaultvalue:默认值</p>
+            <p>min: 最小值</p>
+            <p>max: 最大值</p>
+            <p>disabled:是否禁用组件</p>
+            <p>hidden: 是否显示，不显示：true，显示：false；默认false</p>
+            <p>inputStyle: 样式配置</p>
+            <p>disabled:是否禁用组件</p>
+            <p>rules: Array ,验证规则</p>
+            <p>target:联动源的path/name</p>
+            <p>definitionMap:Object,如果定义 definitionMap，则必须有default字段，例如valueA联动valueB，当definitionMap[valueA]有值，则当前组件的属性被definitionMap[valueA]覆盖，否则使用definitionMap['default']覆盖</p>
+        </blockquote>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+
+</div>
+
+</body>
+</html>

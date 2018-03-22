@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="/ico/favicon.ico">-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/formElement.css" />
+    <title>Radiogroup</title>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <h1>This is react client demo page!!!</h1>
+</div>
+
+<!-- nav -->
+<div class="navbar">
+    <ul class="nav-links-container">
+        <li><a class="active" href="">Introduce</a></li>
+        <li><a href="">Detailed</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="content">
+    <div class="content-limit">
+        <h1 class="title">Radiogroup</h1>
+        <pre class="code">
+            <code>
+                <span>
+                {
+                    "type" : "radioGroup",
+                    "name" : "InterfaceUSES",
+                    "path" : "ApplicationInfo.InterfaceUSES",
+                    "label" : "借款用途",
+                    "textField" : "label",
+                    "valueField" : "value",
+                    "style" : {
+                        "width" : "700px"
+                    },
+                    "valueMap" :{
+                         "sourceAttr1": "targetpath1",
+                         "sourceAttr2": "targetpath2",
+                    },
+                    "options" : [
+                        {
+                            "label" : "经营周转",
+                            "value" : "1"
+                        },
+                        {
+                            "label" : "个人资金周转",
+                            "value" : "2"
+                        },
+                        {
+                            "label" : "消费",
+                            "value" : "3"
+                        },
+                        {
+                            "label" : "创业/投资",
+                            "value" : "4"
+                        },
+                        {
+                            "label" : "其他",
+                            "value" : "5"
+                        }
+                    ],
+                    "components" : [
+                        {
+                             "type":"radioOtherInput",
+                            "radioValue" : "5",
+                            "inputStyle" : {
+                                "marginLeft" : "10px",
+                                "width" : "150px"
+                            },
+                            "name" : "InterfaceUSESOther",
+                            "path" : "ApplicationInfo.InterfaceUSESOther",
+                            "rules" : [
+                                {
+                                    "required" : true,
+                                    "message" : "姓名不能为空"
+                                }
+                            ],
+                            "placeholder" : "其他"
+                        }
+                    ]，
+                    "hidden":false
+                    "disabled":false
+                }
+                </span>
+           </code>
+        </pre>
+        <blockquote class="notes">
+            <p>type: 元素类型</p>
+            <p>name: instance name - 唯一</p>
+            <p>path: 数据结构名称</p>
+            <p>label: 输入框label</p>
+            <p>placeholder: 输入框placeholder</p>
+            <p>textAfter: 文本框后置文字</p>
+            <p>disabled:是否禁用</p>
+            <p>Style: 样式配置</p>
+            <p>rules: Array ,验证规则</p>
+            <p>valueMap:{"options里item的属性名1":'联动目标组件的path1/name1',"options里item的属性名2":'联动目标组件的path2/name2'}</p>
+            <p>options: Array 选项数据</p>
+            <p>textField: 文本字段</p>
+            <p>valueField:值字段</p>
+            <p>components: 子集元素集合</p>
+            <p>disabled:是否禁用组件</p>
+            <p>hidden: 是否显示，不显示：true，显示：false；默认false</p>
+        </blockquote>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+
+</div>
+
+</body>
+</html>

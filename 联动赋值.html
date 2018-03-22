@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="/ico/favicon.ico">-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/formElement.css" />
+    <title>联动赋值</title>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <h1>This is react client demo page!!!</h1>
+</div>
+
+<!-- nav -->
+<div class="navbar">
+    <ul class="nav-links-container">
+        <li><a class="active" href="">Introduce</a></li>
+        <li><a href="">Detailed</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="content">
+    <div class="content-limit">
+        <h1 class="title">联动赋值</h1>
+        <pre class="code">
+            <code>
+                <span>
+                {
+                    ...任意组件
+                    "options":[
+                        {
+                            "sourceAttr": "freestyle",
+                            ...
+                        }
+                    ],
+                    "valueMap" :{
+                        "sourceAttr1": "targetpath1",
+                        "sourceAttr2": "targetpath2",
+                        ...
+                    },
+                }
+                </span>
+           </code>
+        </pre>
+        <blockquote class="notes">
+            <p>这套规则目前只适用于有options的组件</p>
+            <p>options: 必须有。类型：数组类型。数组里的值必须是对象</p>
+            <p>valueMap: 存储联动赋值的信息</p>
+            <p>sourceAttr: 当前options数组里对象的属性</p>
+            <p>targetpath: 待赋值的目标组件path</p>
+        </blockquote>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+
+</div>
+
+</body>
+</html>

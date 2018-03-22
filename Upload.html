@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="/ico/favicon.ico">-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/formElement.css" />
+    <title>upload</title>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <h1>This is react client demo page!!!</h1>
+</div>
+
+<!-- nav -->
+<div class="navbar">
+    <ul class="nav-links-container">
+        <li><a class="active" href="">Introduce</a></li>
+        <li><a href="">Detailed</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="content">
+    <div class="content-limit">
+        <h1 class="title">upload</h1>
+        <pre class="code">
+            <code>
+                <span>
+                {
+                    "type" : "upload",
+                    "fileType":"text|picture",
+                    "urlKey":"imagePath",
+                    "name" : "files",
+                    "path" : "UploadFile.files",
+                    "label" : "上传",
+                    "action" : "//jsonplaceholder.typicode.com/posts/"，
+                    "hidden":false
+                    "disabled":false
+                    "rules":[{
+                        required: true,
+                        message: "请选择上传文件"
+                    }]
+                    "multiple" : true,
+                    "disabled" : false,
+                    "showUploadList" : true,
+                    "accept" : "image/*,.pdf",
+                }
+                </span>
+           </code>
+        </pre>
+        <blockquote class="notes">
+            <p>type: 元素类型</p>
+            <p>fileType: 文件类型（text|picture）</p>
+            <p>urlKey: 加载的数据里的文件网络地址字段名（用于图片的预览或文件的查看）</p>
+            <p>e.g.: response = {code:20000, data:{imagePath:"http://xxxx"}}，这里urlKey:imagePath</p>
+            <p>name: instance name - 唯一</p>
+            <p>path: 数据结构名称</p>
+            <p>label: 输入框label</p>
+            <p>action: 上传文件接口</p>
+            <p>disabled:是否禁用组件</p>
+            <p>hidden: 是否显示，不显示：true，显示：false；默认false</p>
+            <p>rules: [{}],目前只支持控制文件是否必须上传，以及提示信息</p>
+            <p>multiple:是否多文件上传 ,非必填，默认true</p>
+            <p>disabled:是否可编辑 ，非必填，默认false</p>
+            <p>showUploadList:是否显示上传文件列表 ，非必填，默认true</p>
+            <p>accept:可上传文件类型，非必填,默认“image/*,.pdf”</p>
+            <p>accept:可上传文件类型，非必填,默认“image/*,.pdf”</p>
+        </blockquote>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+
+</div>
+
+</body>
+</html>

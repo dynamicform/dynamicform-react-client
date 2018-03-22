@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="/ico/favicon.ico">-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/formElement.css" />
+    <title>RangePicker</title>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <h1>This is react client demo page!!!</h1>
+</div>
+
+<!-- nav -->
+<div class="navbar">
+    <ul class="nav-links-container">
+        <li><a class="active" href="">Introduce</a></li>
+        <li><a href="">Detailed</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="content">
+    <div class="content-limit">
+        <h1 class="title">RangePicker</h1>
+        <pre class="code">
+            <code>
+                <span>
+                {
+                    "type" : "rangepicker",
+                    "name" : "rangepicker",
+                    "path" : "ProfessionalInformation.Rangepicker",
+                    "label" : "选择日期范围",
+                    "placeholder" : "选择日期范围",
+                    "format" : "YYYY-MM-DD",
+                    "defaultvalue" : {
+                        "starttime" : "2017-04-01",
+                        "endtime" : "2017-05-17"
+                    },
+                    "showtime" : false,
+                    "hidden": false,
+                    "disabled":false,
+                    "rules" : [
+                        {
+                            "required" : true,
+                            "message" : "选择日期范围""
+                        }
+                    ]
+                }
+                </span>
+           </code>
+        </pre>
+        <blockquote class="notes">
+            <p>type: 元素类型</p>
+            <p>name: instance name - 唯一</p>
+            <p>path: 数据提交json格式</p>
+            <p>label: 输入框label</p>
+            <p>format: 日期格式</p>
+            <p>defaultvalue:</p>
+            <p>::starttime:起始日期默认值</p>
+            <p>::endtime:结束日期默认值</p>
+            <p>showtime:增加时间选择功能,默认</p>
+            <p>disabled:是否禁用组件</p>
+            <p>hidden: 是否显示，不显示：true，显示：false；默认false</p>
+            <p>placeholder: 输入框placeholder</p>
+            <p>rules: Array ,验证规则 </p>
+            <p>
+                更多展示的日期格式，配置参考
+                <a href="http://momentjs.com/" rel="nofollow noreferrer" target="_blank">moment</a>
+            </p>
+        </blockquote>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+
+</div>
+
+</body>
+</html>

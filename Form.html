@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="/ico/favicon.ico">-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/formDefinition.css" />
+    <title>Form</title>
+</head>
+<body>
+    <!-- header -->
+    <div class="header">
+        <h1>This is react client demo page!!!</h1>
+    </div>
+
+    <!-- nav -->
+    <div class="navbar">
+        <ul class="nav-links-container">
+            <li><a class="active" href="">Introduce</a></li>
+            <li><a href="">Detailed</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+        <div class="content-limit">
+            <h1 class="title">Form</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>成员</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>isUpdate</td>
+                        <td>除创建表单为true,则为否</td>
+                        <td>bool</td>
+                        <td>-false</td>
+                    </tr>
+                    <tr>
+                        <td>formDefinitionSrc</td>
+                        <td>表单地址</td>
+                        <td>string</td>
+                        <td>-URL</td>
+                    </tr>
+                    <tr>
+                        <td>submitDataSrc</td>
+                        <td>表单数据提交地址</td>
+                        <td>string</td>
+                        <td>-URL</td>
+                    </tr>
+                    <tr>
+                        <td>formDataSrc</td>
+                        <td>回填数据地址</td>
+                        <td>string</td>
+                        <td>-URL</td>
+                    </tr>
+                    <tr>
+                        <td>onSubmit</td>
+                        <td>表单提交方法 function(formData); fomData 为当前表单JSON</td>
+                        <td>-</td>
+                        <td>-function(formData) </td>
+                    </tr>       <tr>
+                        <td>beforeSubmit</td>
+                        <td>表单提交前事件</td>
+                        <td>-</td>
+                        <td>-function() </td>
+                    </tr>       <tr>
+                        <td>onSuccess</td>
+                        <td>表单提交成功时间，httpstatus：200后执行</td>
+                        <td>-</td>
+                        <td>-function(response) </td>
+                    </tr>
+                    <tr>
+                        <td>onError</td>
+                        <td>表单提交报错后执行</td>
+                        <td>-</td>
+                        <td>-function(error) </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <br />
+                <br />
+                <span>onSubmit如果定义了自定Submit，那么默认的beforeSubmit、onSuccess、onError不会执行</span>
+                <br />
+                <br />
+                <br />
+                <br />
+            </p>
+            <div>
+                <a class="no-attachment-icon" href="http://git.quarkfinance.com/dynamicform/dynamicform-render/uploads/e26bc09aa286079b674377ef3a22216d/436394-20170724103342242-1533804650.png" target="_blank">
+                    <img src="http://git.quarkfinance.com/dynamicform/dynamicform-render/uploads/e26bc09aa286079b674377ef3a22216d/436394-20170724103342242-1533804650.png" alt="436394-20170724103342242-1533804650">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+
+    </div>
+
+</body>
+</html>

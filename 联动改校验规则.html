@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="/ico/favicon.ico">-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/formElement.css" />
+    <title>联动改校验规则</title>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <h1>This is react client demo page!!!</h1>
+</div>
+
+<!-- nav -->
+<div class="navbar">
+    <ul class="nav-links-container">
+        <li><a class="active" href="">Introduce</a></li>
+        <li><a href="">Detailed</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="content">
+    <div class="content-limit">
+        <h1 class="title">Container</h1>
+        <pre class="code">
+            <code>
+                <span>
+                {
+                    ...组件的其它属性,
+                     "target":"loanAppInfo.appTime1",
+                    "definitionMap" : {
+                        "valueA1" : {
+                            "rules" : [
+                                {
+                                    "required" : true,
+                                    "pattern" : "/(^1[0-9][0-9][0-9](.[0-9]{1,2})?$)|(^1[0-9][0-9][0-9]$)/",
+                                    "message" : "必填, 金额输入范围为1000~2000,最多两位小数"
+                                }
+                            ]
+                        },
+                        "valueA2" : {
+                            "rules" : [
+                                {
+                                    "required" : true,
+                                    "message" : "必填, 金额输入范围为2000~3000,最多两位小数",
+                                    "pattern" : "/(^2[0-9][0-9][0-9](.[0-9]{1,2})?$)|(^2[0-9][0-9][0-9]$)/"
+                                }
+                            ]
+                        }
+                    },
+                }
+                </span>
+           </code>
+        </pre>
+        <blockquote class="notes">
+            <p>注意本配置是配在被联动组件上的，例如A的值变化，影响到B的校验规则，则在B组件上配置本信息</p>
+            <p>目前只有InputNumebr支持该属性，后续新增支持组件会在此说明</p>
+            <p>target: 在上面的例子里，就是A的path</p>
+            <p>definitionMap: A的值和B的校验规则之间的映射关系</p>
+            <p>valueA: A组件的值</p>
+        </blockquote>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+
+</div>
+
+</body>
+</html>

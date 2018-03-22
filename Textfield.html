@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="/ico/favicon.ico">-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/formElement.css" />
+    <title>Textfield</title>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <h1>This is react client demo page!!!</h1>
+</div>
+
+<!-- nav -->
+<div class="navbar">
+    <ul class="nav-links-container">
+        <li><a class="active" href="">Introduce</a></li>
+        <li><a href="">Detailed</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="content">
+    <div class="content-limit">
+        <h1 class="title">Textfield</h1>
+        <pre class="code">
+            <code>
+                <span>
+                    {
+                        "type" : "textfield",
+                        "name" : "fullname",
+                        "path" : "ProfessionalInformation.fullname",
+                        "inputType" : "text",
+                        "label" : "姓名",
+                        "defaultvalue" : "张三",
+                        "placeholder" : "请输入姓名",
+                        "addonBefore" : "",
+                        "addonAfter" : "",
+                        "rules" : [
+                            {
+                                "required" : true,
+                                "message" : "姓名必填"
+                            },
+                            {
+                                "pattern" : "/^\\d+$/",
+                                "message" : "请输入数字"
+                            },
+                            {
+                                 "type": "email",
+                                 "message": "The input is not valid E-mail!"
+                            }
+                        ]，
+                        "hidden":false
+                        "disabled":false
+                    }
+                </span>
+           </code>
+        </pre>
+        <blockquote class="notes">
+            <p>type: 元素类型</p>
+            <p>path: 数据提交json格式</p>
+            <p>name: instance name - 唯一</p>
+            <p>inputType: 输入框类型- 参考html input type</p>
+            <p>label: 输入框label</p>
+            <p>defaultvalue:默认值</p>
+            <p>placeholder: 输入框placeholder</p>
+            <p>addonBefore: 输入框前置字符</p>
+            <p>addonAfter: 输入框后置字符</p>
+            <p>rules: Array ,验证规则</p>
+            <p>disabled:是否禁用组件</p>
+            <p>hidden: 是否显示，不显示：true，显示：false；默认false</p>
+        </blockquote>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+
+</div>
+
+</body>
+</html>

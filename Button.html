@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="/ico/favicon.ico">-->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/formElement.css" />
+    <title>Button</title>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <h1>This is react client demo page!!!</h1>
+</div>
+
+<!-- nav -->
+<div class="navbar">
+    <ul class="nav-links-container">
+        <li><a class="active" href="">Introduce</a></li>
+        <li><a href="">Detailed</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="content">
+    <div class="content-limit">
+        <h1 class="title">Button</h1>
+        <pre class="code">
+            <code>
+                <span>
+                    {
+                        "onFunction" : "function submit(){alert('您好');}",
+                        "actionPath" : "http://localhost:3000/api/createformdata",
+                        "buttonType" : "custom",
+                        "style" : "success",
+                        "label" : "自定以按钮",
+                        "type" : "button"
+                    }
+                </span>
+           </code>
+        </pre>
+        <blockquote class="notes">
+            <p>type: 元素类型</p>
+            <p>action:</p>
+            <p>label: 输入框label</p>
+            <p>buttonType: 按钮类型(save、submit、custom、validationButton、reset)</p>
+            <p>onFunction: 自定义方法，buttonType为custom时触发</p>
+            <p>actionPath: 提交地址，buttonType为save、submit时必填</p>
+            <p>style: 日期格式(暂没有应用)</p>
+            <p>disabled:是否禁用组件</p>
+            <p>hidden: 是否显示，不显示：true，显示：false；默认false</p>
+        </blockquote>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+
+</div>
+
+</body>
+</html>
