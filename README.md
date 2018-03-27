@@ -2,18 +2,63 @@
 
 用于读取表单定义，然后渲染组件
 
-## 私服地址
 
-http://nexus-dev.quarkfinance.com:8081/#browse/browse/components:npm-hosted
+## 安装
 
-## Jenkins集成地址
+* `npm install  dynamicform-react-client --save`;
 
-http://172.16.6.31:8080/job/dynamicform/job/dynamicform-render/
 
-## dynamicform-render项目引用
-修改npm私服 执行命令：npm set registry http://nexus-dev.quarkfinance.com:8081/repository/npm-group/
+## 用法
 
-##安装
+* 创建 store.js
+```bash
+ import { applyMiddleware, createStore, combineReducers} from 'redux';
+    import thunk from 'redux-thunk';
+    import { reducer as formReducer } from 'dynamicform-render';
 
-* `npm install  dynamicform-render --save`;
+    const middleware = applyMiddleware(thunk);
+
+    export default createStore(
+        combineReducers({
+            formReducer,
+        }),
+        middleware
+    );
+```
+
+* 创建 index.js
+```bash
+import {Provider} from 'react-redux';
+import store from '../../../store';
+import DynamicForm from 'dynamicform-render
+
+beforeSubmit(){
+        console.log('回调函数beforeSubmit');
+    }
+    onSuccess(){
+        console.log('回调函数onSuccess');
+    }
+    onError(){
+        console.log('回调函数onError')
+    }
+    onSubmit(){
+        console.log('自定义onSubmit')
+    }
+
+
+<Provider store={store}>
+            <DynamicForm
+                formDefinitionSrc=''
+                submitDataSrc={``}
+                _id={''}
+                beforeSubmit={this.beforeSubmit}
+                onSuccess={this.onSuccess}
+                onError={this.onError}
+            >
+            </DynamicForm>
+        </Provider>)
+```
+
+## Changelog
+See [CHANGELOG.md](https://github.com/dynamicform/dynamicform-react-client/blob/master/CHANGELOG.MD)
 
