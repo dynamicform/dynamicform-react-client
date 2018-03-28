@@ -1,3 +1,8 @@
+/* body */
+body {
+    overflow-y: scroll;
+}
+
 /* header */
 .header {
     position: fixed;

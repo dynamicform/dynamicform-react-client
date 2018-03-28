@@ -1,23 +1,25 @@
 /* content */
 .content .content-limit .title {
-    font-size: 24px;
-    /*font-weight: 600;*/
+    font-weight: 600;
     margin: 16px 0 10px;
     color: #313236;
-    font-weight: bold;
+    font-size: 30px;
+    line-height: 38px;
 }
 
-.content .content-limit ul li {
-    margin: 16px 0 10px;
+.content .content-limit .img-content {
+    text-align: center;
+    margin: 40px 0;
 }
 
-.content .content-limit ul li a {
+.content .content-limit .img-content .img {
+    width: 1000px;
+    height: 360px;
+}
+
+.content .content-limit .text-content p {
+    margin: 16px 0;
+    color: #314659;
     font-size: 20px;
-    color: #3084bb;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.content .content-limit ul li a:hover {
-    text-decoration: underline;
+    line-height: 2;
 }

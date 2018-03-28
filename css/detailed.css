@@ -1,0 +1,23 @@
+/* content */
+.content .content-limit .title {
+    font-size: 24px;
+    /*font-weight: 600;*/
+    margin: 16px 0 10px;
+    color: #313236;
+    font-weight: bold;
+}
+
+.content .content-limit ul li {
+    margin: 16px 0 10px;
+}
+
+.content .content-limit ul li a {
+    font-size: 20px;
+    color: #3084bb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.content .content-limit ul li a:hover {
+    text-decoration: underline;
+}
