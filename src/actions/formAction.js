@@ -42,12 +42,13 @@ export function updateInitFormData(){
     };
 }
 
-export function removeDynamicElement(key) {
+export function removeDynamicElement(key,index) {
     return (dispatch) => {
         dispatch({
             type: REMOVE_DYNAMIC_ELEMENT,
             payload: {
-                key: key
+                key: key,
+                index:index
             }
         });
     };

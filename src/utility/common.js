@@ -64,4 +64,23 @@ export function getIsCascadeElement(nextPropsFormData,currentFormData,conditionM
         return false;
     }
 }
+/**
+ * 重构方法，
+ * 
+ * @export
+ * @param {any} whichcontrolValue 
+ * @param {any} condition 
+ * @returns 成立 true，则返回 false
+ */
+export function conditionResult(whichcontrolValue,condition){
+    switch(condition.comparison){
+      case 'EQ':{
+          return whichcontrolValue === condition.value;
+      }
+      case 'IN':{
+        return condition.value.indexOf(whichcontrolValue)>=0;
+      }
+    }
+    return false;
+  }
 

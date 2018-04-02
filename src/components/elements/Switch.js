@@ -4,26 +4,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Switch, Form, Icon} from 'antd';
+import _ from 'lodash';
 import {initFormData,initDynamicFormData, updateFormData,updateDynamicFormData} from '../../actions/formAction';
 import {FormItemLayout, MapStateToProps,getIsCascadeElement} from '../../utility/common';
-import _ from 'lodash';
+import Base from './Base';
 
 const FormItem = Form.Item;
 
-
-export class QSwitch extends React.Component {
-    constructor() {
-        super();
+export class QSwitch extends Base {
+    constructor(props) {
+        super(props);
+        this.state = {
+            ...props.definition
+        };
     }
-    get objectKey() {
-        return this.state.name;
-    }
-
-    get objectPath() {
-        return this.state.path || this.state.name;
-    }
-
-
     componentWillMount() {
         this.state = this.props.definition || this.state;
         if (this.props.isNewForm) {
@@ -35,16 +29,15 @@ export class QSwitch extends React.Component {
                 this.props.dispatch(initFormData(this.objectPath, value));
             }
         }
+        if(this.props.isDynamic) {
+            const dataPosition = this.props.dataPosition;
+            this.props.dispatch(initDynamicFormData(this.objectPath, null, dataPosition));
+        }
     }
 
     handleOnChange(sw) {
         const value = sw;
-        if(!this.props.isDynamic) {
-            this.props.dispatch(updateFormData(this.objectPath, value));
-        } else {
-            const dataPosition = this.props.dataPosition;
-            this.props.dispatch(updateDynamicFormData(this.objectPath, value, dataPosition));
-        }
+        this.props.dispatch(updateFormData(this.objectPath, value));
     }
     shouldComponentUpdate(nextProps, nextState) {
         //only render when value is changed or form is submitting
@@ -54,71 +47,9 @@ export class QSwitch extends React.Component {
         //only render when value is changed or form is submitting
         return currentValue !== nextValue || nextProps.isSubmitting || isCascadElement ;
     }
-    getValue(formData){
-        if(this.props.isDynamic) {
-            const dataPosition = this.props.dataPosition;
-            const path = `${dataPosition.objectName}[${dataPosition.index}].${this.objectPath}`;
-            return _.get(formData, path);
-        } else {
-            return _.get(formData, this.objectPath);
-        }
-    }
-    getDynamicKey() {
-        if(this.props.isDynamic) {
-            const dataPosition = this.props.dataPosition;
-            const index = dataPosition.index;
-            return `${this.objectKey}-${index}`;
-        } else {
-            return this.objectKey;
-        }
-    }
-    get Rules(){
-        if(this.isHidden==='none'||this.isDisabled){
-            return [];
-        }else{
-            return this.state.rules;
-        }
-    }
-    get isHidden() {
-        if (!this.state.conditionMap  || this.state.conditionMap.length == 0) {
-            return this.state.hidden ? 'none' : '';
-        } else {
-            let ElementAttribute = this.state.conditionMap.map((item, index)=> {
-                let itemValue = _.get(this.props.formData, item.whichcontrol);
-                switch (item.how) {
-                    case 'equal': {
-                        return item.value === itemValue && item.action === 'hidden' && item.actionValue ? 'none' : '';
-                    }
-                }
-                return '';
-            });
-            return _.includes(ElementAttribute, 'none') ? 'none' : '';
-        }
-    }
-    get isDisabled(){
-        if(!this.state.conditionMap|| this.state.conditionMap.length == 0) {
-            return this.state.disabled;
-        }else {
-            let ElementAttribute = this.state.conditionMap.map((item, index)=> {
-                let itemValue = _.get(this.props.formData, item.whichcontrol);
-                switch (item.how) {
-                    case 'equal': {
-                        return item.value === itemValue && item.action === 'disabled' && item.actionValue;
-                    }
-                    case 'greater': {
-                        return '';
-                    }
-                    case 'less': {
-                        return '';
-                    }
-                }
-            });
-            return _.includes(ElementAttribute, true);
-        }
-    }
     render() {
         const {getFieldDecorator} = this.props.form;
-        const key = this.getDynamicKey();
+        const key = this.DynamicKey;
         return (
             <FormItem {...FormItemLayout()} label={this.state.label}  style={{display:this.isHidden}}>
                 {getFieldDecorator(key, {

@@ -10,7 +10,7 @@ export default class QRow extends React.Component {
     }
 
     getComponent(componentDefinition, index) {
-        return getElement(componentDefinition, index);
+        return getElement(componentDefinition, index,this.props.formConfig);
     }
 
     render() {

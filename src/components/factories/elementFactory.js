@@ -21,90 +21,105 @@ import MonthPicker from '../elements/MonthPicker';
 import ValidationButton from '../elements/ValidationButton';
 import DynamicControl from '../elements/DynamicControl';
 
-export function getDynamicElement(componentDefinition , index, dataPosition) {
+export function getDynamicElement(componentDefinition , index, dataPosition,formConfig) {
     const componentType = componentDefinition.type;
+    let property={
+        key:index,
+        definition:componentDefinition,
+        isDynamic:"true",
+        dataPosition:dataPosition,
+        formConfig:formConfig,
+    }
     switch (componentType) {
         case 'textfield':
-            return <Textfield
-                key={index}
-                definition={componentDefinition}
-                isDynamic="true"
-                dataPosition={dataPosition}
-                />;
-        case 'container':
-            return <Container
-                key={index}
-                definition={componentDefinition}
-                isDynamic="true"
-                dataPosition={dataPosition}
-                />;
-        case 'cascadeSelect':
-            return <CascadeSelect
-                key={index}
-                definition={componentDefinition}
-                isDynamic="true"
-                dataPosition={dataPosition}
-                />;
-        case 'radioGroup':
-            return <RadioGroup
-                key={index}
-                definition={componentDefinition}
-                isDynamic="true"
-                dataPosition={dataPosition}
-                />;
+            return <Textfield {...property} />;
+        case 'hiddenTextfield':
+            return <HiddenTextfield {...property}/>;
         case 'select':
-            return <Select
-                key={index}
-                definition={componentDefinition}
-                isDynamic="true"
-                dataPosition={dataPosition}
-                />;
+            return <Select {...property} />;
+        case 'button':
+            return <Button {...property} {...props} />;
+        case 'container':
+            return <Container {...property} />;
+        case'cascadeSelect':
+            return <CascadeSelect {...property} />;
+        case 'upload':
+            return <Upload {...property} />;
+        case 'radioGroup':
+            return <RadioGroup {...property} />;
+        case 'checkBoxGroup':
+            return <CheckBoxGroup {...property} />;
+        case 'datepicker':
+            return <DatePicker {...property} />;
+        case 'rangepicker':
+            return <RangePicker {...property} />;
+        case 'inputNumber':
+            return <InputNumber {...property} />;
+        case 'row':
+            return <Row {...property} />;
+        case 'col':
+            return <Col {...property} />;
+        case 'timepicker':
+            return <TimePicker {...property} />;
+        case 'switch':
+            return <Switch {...property} />;
+        case 'monthpicker':
+            return <MonthPicker {...property} />;
+        case 'vbutton':
+            return <ValidationButton {...property} />;
+        case 'DynamicControl':
+            return <DynamicControl {...property} />;
         default:
-            return <div key={index}></div>;
+            return <div  {...property} ></div>;
     }
 }
 
-export function getElement (componentDefinition , index , value, props) {
+export function getElement (componentDefinition , index ,formConfig, props) {
     const componentType = componentDefinition.type;
+    let property={
+        key:index,
+        formConfig:formConfig,
+        definition:componentDefinition
+      }
     switch (componentType) {
         case 'textfield':
-            return <Textfield key={index} definition={componentDefinition} />;
+            return <Textfield{...property} />;
         case 'hiddenTextfield':
-            return <HiddenTextfield key={index} definition={componentDefinition}/>;
+            return <HiddenTextfield {...property}/>;
         case 'select':
-            return <Select key={index} definition={componentDefinition} />;
+            return <Select {...property} />;
         case 'button':
-            return <Button key={index} definition={componentDefinition} {...props}/>;
+            return <Button {...property} {...props} />;
         case 'container':
-            return <Container key={index} definition={componentDefinition} value={value}/>;
+            return <Container {...property}  />;
         case'cascadeSelect':
-            return <CascadeSelect key={index} definition={componentDefinition}/>;
+            return <CascadeSelect {...property} />;
         case 'upload':
-            return <Upload key={index} definition={componentDefinition}/>;
+            return <Upload {...property} />;
         case 'radioGroup':
-            return <RadioGroup key={index} definition={componentDefinition}/>;
+            return <RadioGroup {...property} />;
         case 'checkBoxGroup':
-            return <CheckBoxGroup key={index} definition={componentDefinition}/>;
+            return <CheckBoxGroup {...property} />;
         case 'datepicker':
-            return <DatePicker key={index} definition={componentDefinition}/>;
+            return <DatePicker {...property} />;
         case 'rangepicker':
-            return <RangePicker key={index} definition={componentDefinition}/>;
+            return <RangePicker {...property} />;
         case 'inputNumber':
-            return <InputNumber key={index} definition={componentDefinition}/>;
+            return <InputNumber {...property} />;
         case 'row':
-            return <Row key={index} definition={componentDefinition} value={value}/>;
+            return <Row {...property} />;
         case 'col':
-            return <Col key={index} definition={componentDefinition} value={value}/>;
+            return <Col {...property} />;
         case 'timepicker':
-            return <TimePicker key={index} definition={componentDefinition}/>;
+            return <TimePicker {...property} />;
         case 'switch':
-            return <Switch key={index} definition={componentDefinition}/>;
+            return <Switch {...property} />;
         case 'monthpicker':
-            return <MonthPicker key={index} definition={componentDefinition} />;
+            return <MonthPicker {...property} />;
         case 'vbutton':
-            return <ValidationButton key={index} definition={componentDefinition} />;
+            return <ValidationButton {...property} />;
         case 'DynamicControl':
-            return <DynamicControl key={index} definition={componentDefinition} />;
+            return <DynamicControl {...property} />;
         default:
             return <div key={index}></div>;
     }

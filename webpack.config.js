@@ -37,6 +37,7 @@ module.exports = {
             { test: /\.less$/, loader: "style-loader!css-loader!less-loader"}
         ]
     },
+    devtool: 'eval-source-map',
     //配置开发webpack-dev-server
     devServer: {
         compress: true,
