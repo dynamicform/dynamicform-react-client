@@ -45,14 +45,14 @@ export class QContainer extends React.Component {
         if(this.props.formConfig.onClickDeleteButton){
             deleteButton=this.props.formConfig.onClickDeleteButton;
         }else{
-            deleteButton=<div></div>
+            deleteButton=<div></div>;
         }
         return (
             <Card 
                 title={title} 
                 style={{ margin: '0 0 15px',display:containerDefinition.viewable?'none':''}}
                 key={containerDefinition.name} 
-                extra={deleteButton}
+                // extra={deleteButton}
             >
                 {renderContainer}
             </Card>

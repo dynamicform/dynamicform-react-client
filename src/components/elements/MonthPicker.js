@@ -20,6 +20,7 @@ export class QMonthPicker extends Base {
         this.state = {
             ...props.definition
         };
+        this.handleOnChange= this.handleOnChange.bind(this);
     }
     componentWillMount() {
         this.state = this.props.definition || this.state;
@@ -56,7 +57,7 @@ export class QMonthPicker extends Base {
         return currentValue !== nextValue || nextProps.isSubmitting || isCascadElement ;
     }
     handleOnChange(date, dateString) {
-        const value = dateStrings;
+        const value = dateString;
         this.props.dispatch(updateFormData(this.objectPath, value));
     }
 

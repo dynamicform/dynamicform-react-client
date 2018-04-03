@@ -19,6 +19,7 @@ export class QDatePicker extends Base {
         this.state = {
             ...props.definition
         };
+        this.handleOnChange= this.handleOnChange.bind(this);
     }
 
     componentWillMount() {
@@ -56,7 +57,7 @@ export class QDatePicker extends Base {
         return currentValue !== nextValue || nextProps.isSubmitting || isCascadElement;
     }
     handleOnChange(date, dateString) {
-        const value = dateStrings;
+        const value = dateString;
         this.props.dispatch(updateFormData(this.objectPath, value));
     }
 

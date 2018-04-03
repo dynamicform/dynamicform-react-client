@@ -42,9 +42,11 @@ export class QUpload extends Base{
             }
         }
     }
-    handleCancel = () => this.setState({ previewVisible: false })
+    handleCancel() { 
+        this.setState({ previewVisible: false });
+    }
 
-    handlePreview = (file) => {
+    handlePreview(file)  {
         this.setState({
             previewImage: file.url,
             previewVisible: true,
@@ -56,7 +58,7 @@ export class QUpload extends Base{
         const isCascadElement = getIsCascadeElement(nextProps.formData,this.props.formData,this.state.conditionMap);
         return currentValue !== nextValue || nextProps.isSubmitting || isCascadElement || !this.state!=nextState;
     }
-    handleChange = ({ file,fileList,event}) => {
+    handleChange(file,fileList,event) {
         let value = [];
         if (fileList && _.isArray(fileList)) {
             fileList.forEach((item, index) => {
@@ -79,7 +81,7 @@ export class QUpload extends Base{
             });
             this.props.dispatch(updateFormData(this.objectPath, value));
         }
-    };
+    }
 
     render() {
         const key = this.DynamicKey;

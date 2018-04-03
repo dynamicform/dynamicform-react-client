@@ -58,14 +58,14 @@ export class QVButton extends React.Component {
             return _.includes(ElementAttribute, true);
         }
     }
-    handleOnClick = async (event) => {
+    async handleOnClick(event) {
         let obj={};
         this.state.paths.map((item,index)=>{
             _.set(obj,item.name.toString(),_.get(this.props.formData, item.path));
         });
         let res =await post(this.state.APIPath,obj);
         message.info(res.data.result);
-    };
+    }
 
     render() {
         return (

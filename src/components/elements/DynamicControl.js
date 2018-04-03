@@ -19,6 +19,7 @@ export class DynamicControl extends React.Component {
     constructor(props) {
         super(props);
         this.addComponent = this.addComponent.bind(this);
+        this.removeComponent = this.removeComponent.bind(this);
         this.state = {
             definition:props.definition,
             form: props.form,
@@ -108,7 +109,6 @@ export class DynamicControl extends React.Component {
         let count=this.state.definition.minCount?this.state.definition.minCount:0;
         //判断目前的formdData
         let item=_.get(this.props.formData, this.DynamicPath);
-        console.log(this.props.formData,'--------');
         let dynamicElementNumber = this.currentForm.getFieldValue(this.objectKey);
         
         if(dynamicElementNumber && count<dynamicElementNumber.length){
@@ -119,7 +119,6 @@ export class DynamicControl extends React.Component {
             dynamicElementNumberOther = dynamicElementNumberOther.concat(i);
         }
         return dynamicElementNumberOther.map((item,index)=>{
-            console.log(item,index)
             const template = _.cloneDeep(this.state.definition).template;
             template.label = template.label + (index+1);
             let formConfig={
@@ -128,7 +127,6 @@ export class DynamicControl extends React.Component {
                 path : this.DynamicPath,
                 //readOnly : this.props.formConfig.readOnly,
                 onClickDeleteButton:<Button type="dashed" 
-                                    
                                     onClick={this.onClickDelete.bind(this,index)}>
                                 <Icon type="minus" /> 移除{this.state.definition.label}
                         </Button>
@@ -143,7 +141,7 @@ export class DynamicControl extends React.Component {
         let dynamicElementNumber = this.currentForm.getFieldValue(this.objectKey);
         //判断是不是比默认最小的还小
         if(this.state.definition.minCount>=dynamicElementNumber.length){
-            let msg=`${this.state.definition.label} 默认最小必填 ${this.state.definition.minCount} 个`
+            let msg=`${this.state.definition.label} 默认最小必填 ${this.state.definition.minCount} 个`;
             message.error(msg);
         }else{
             dynamicElementNumber.splice(index,1);
@@ -172,6 +170,20 @@ export class DynamicControl extends React.Component {
             return false;
         //}
     }
+    removeComponent(){
+        this.state.uuid--;
+        //remove last number;
+        const dynamicElementNumber = this.props.form.getFieldValue(this.objectKey);
+        dynamicElementNumber.pop();
+
+        const nextDynamicElementNumber = dynamicElementNumber;
+        // can use data-binding to set
+        // important! notify form to detect changes
+        this.props.form.setFieldsValue({
+            [this.objectKey]: nextDynamicElementNumber,
+        });
+        this.props.dispatch(removeDynamicElement(this.objectKey));
+    }
 
     render() {
         return(
@@ -181,6 +193,10 @@ export class DynamicControl extends React.Component {
                     <Button type="dashed" disabled={this.addIsDisabled} onClick={this.addComponent}>
                         <Icon type="plus" /> 添加{this.state.definition.label}
                     </Button>
+                    <Button type="dashed" 
+                                    onClick={this.removeComponent}>
+                                <Icon type="minus" /> 移除{this.state.definition.label}
+                        </Button>
                 </FormItem>
             </div>);
     }

@@ -16,6 +16,8 @@ export class QInputNumber extends Base{
             othervalue:'',
             ...props.definition
         };
+        this.handleOnChange= this.handleOnChange.bind(this);
+        this.handleConfirm= this.handleConfirm.bind(this);
     }
     componentWillMount(){
         if(this.props.isNewForm) {
@@ -39,11 +41,10 @@ export class QInputNumber extends Base{
         //only render when value is changed or form is submitting
         return currentValue !== nextValue || nextProps.isSubmitting ||isCascadElement;
     }
-    handleOnChange = (data) => {
-        const value = event.target.value;
+    handleOnChange (value) {
         this.props.dispatch(updateFormData(this.objectPath, value));
     }
-    handleConfirm = (rule, value, callback) => {
+    handleConfirm (rule, value, callback) {
         let targetValue = _.get(this.props.formData, this.state.target);
         let rules = this.state.definitionMap && 
                     this.state.definitionMap[targetValue] && 

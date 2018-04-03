@@ -17,6 +17,7 @@ export class QSwitch extends Base {
         this.state = {
             ...props.definition
         };
+        this.handleOnChange = this.handleOnChange.bind(this);
     }
     componentWillMount() {
         this.state = this.props.definition || this.state;

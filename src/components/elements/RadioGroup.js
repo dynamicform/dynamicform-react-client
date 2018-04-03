@@ -30,6 +30,8 @@ export class QRadioGroup extends Base {
             othervalue:'',
             ...props.definition
         };
+        this.handleOnChange= this.handleOnChange.bind(this);
+        this.other_handleOnChange= this.other_handleOnChange.bind(this);
     }
 
     componentWillMount() {
@@ -74,7 +76,7 @@ export class QRadioGroup extends Base {
         //only render when value is changed or form is submitting
         return currentValue !== nextValue || nextProps.isSubmitting  || isCascadElement ;
     }
-    handleOnChange = (event) => {
+    handleOnChange (event)  {
         const value = event.target.value;
         if(!this.props.isDynamic) {
             this.props.dispatch(updateFormData(this.objectPath, value));

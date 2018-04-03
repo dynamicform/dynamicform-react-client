@@ -16,7 +16,7 @@ export class CascadeSelect extends Base {
         this.handleOnChange = this.handleOnChange.bind(this);
         this.state= {
             ...props.definition
-        }
+        };
     }
 
     componentWillMount() {

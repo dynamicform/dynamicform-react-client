@@ -26,10 +26,10 @@ export function getDynamicElement(componentDefinition , index, dataPosition,form
     let property={
         key:index,
         definition:componentDefinition,
-        isDynamic:"true",
+        isDynamic:true,
         dataPosition:dataPosition,
         formConfig:formConfig,
-    }
+    };
     switch (componentType) {
         case 'textfield':
             return <Textfield {...property} />;
@@ -38,7 +38,7 @@ export function getDynamicElement(componentDefinition , index, dataPosition,form
         case 'select':
             return <Select {...property} />;
         case 'button':
-            return <Button {...property} {...props} />;
+            return <Button {...property} />;
         case 'container':
             return <Container {...property} />;
         case'cascadeSelect':
@@ -80,7 +80,7 @@ export function getElement (componentDefinition , index ,formConfig, props) {
         key:index,
         formConfig:formConfig,
         definition:componentDefinition
-      }
+    };
     switch (componentType) {
         case 'textfield':
             return <Textfield{...property} />;

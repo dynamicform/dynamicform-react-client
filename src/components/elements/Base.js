@@ -1,4 +1,6 @@
 import React from 'react';
+import _ from 'lodash';
+
 export default class Base extends React.Component{
     constructor(props){
         super(props);

@@ -58,7 +58,7 @@ export default class DynamicFormRender extends React.Component {
                     _.get(this.props.formData, componentDefinition.name) : '';
         }
         let formConfig={};
-        formConfig.path = `${componentDefinition.name}`
+        formConfig.path = `${componentDefinition.name}`;
         return getElement(componentDefinition, index,formConfig,this.props);
     }
 
