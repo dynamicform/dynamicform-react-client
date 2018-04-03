@@ -60,8 +60,14 @@
     2.修复lint语法问题
 ### 1.6.2 (2017-08-22) [KangYe](https://github.com/gametheworld)
     1.修复propTypes
-### 1.6.2 (2017-08-22) [KangYe](https://github.com/gametheworld)
+### 1.7.2 (2018-04-02) [KangYe](https://github.com/gametheworld)
     1.修复[#24](https://github.com/dynamicform/dynamicform-react-client/issues/24)
     2.重构基础组件代码
     3.webpack.config加入devtool: 'eval-source-map',调试模块
     4.修改数组组件初始值错误
+### 1.7.3 (2018-04-03) [KangYe](https://github.com/gametheworld)
+    1.npm run lint 修复语法错误
+    2.修复InputNumber保存值错误
+    3.修复DynamicControl加入熟悉path
+    4.统一事件绑定语法在constructor构造函数中bind
+   
