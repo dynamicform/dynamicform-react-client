@@ -14,7 +14,7 @@
 ```bash
  import { applyMiddleware, createStore, combineReducers} from 'redux';
     import thunk from 'redux-thunk';
-    import { reducer as formReducer } from 'dynamicform-render';
+    import { reducer as formReducer } from 'dynamicform-react-client';
 
     const middleware = applyMiddleware(thunk);
 
@@ -30,7 +30,7 @@
 ```bash
 import {Provider} from 'react-redux';
 import store from '../../../store';
-import DynamicForm from 'dynamicform-render
+import DynamicForm from 'dynamicform-react-client'
 
 beforeSubmit(){
         console.log('回调函数beforeSubmit');

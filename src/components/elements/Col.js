@@ -28,7 +28,7 @@ export default class QCol extends React.Component {
         value = componentDefinition.hasOwnProperty('path') ?
             _.get(this.props.formData, componentDefinition.path) : componentDefinition.hasOwnProperty('name') ?
                 _.get(this.props.formData, componentDefinition.name) : undefined;
-        return getElement(componentDefinition, index, value);
+        return getElement(componentDefinition, index,this.props.formConfig, value);
     }
 
     render() {

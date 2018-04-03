@@ -1,10 +1,10 @@
 {
   "name": "dynamicform-react-client",
-  "version": "1.6.2",
+  "version": "1.7.3",
   "description": "Form Render",
   "main": "lib/index.js",
   "scripts": {
-    "dev": "webpack-dev-server  --host 0.0.0.0",
+    "dev": "webpack-dev-server ",
     "lint": "eslint src",
     "build": "npm run build:lib",
     "build:lib": "babel src --out-dir lib",

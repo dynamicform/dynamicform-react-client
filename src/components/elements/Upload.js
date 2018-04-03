@@ -5,9 +5,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Form, Upload, Button, Icon, Modal} from 'antd';
 import _ from 'lodash';
-import {getIsCascadeElement} from '../../utility/common';
+import {getIsCascadeElement,MapStateToProps} from '../../utility/common';
 import {initFormData, updateFormData,initDynamicFormData} from '../../actions/formAction';
 import {uploadPropType} from '../../utility/propTypes';
+import Base from './Base';
 const FormItem = Form.Item;
 const formItemLayout = {
     labelCol: {
@@ -20,16 +21,7 @@ const formItemLayout = {
     },
 };
 
-function mapStateToProps(store) {
-    return {
-        form: store.formReducer.form,
-        formData: store.formReducer.formData,
-        isNewForm: store.formReducer.isNewForm,
-        isSubmitting: store.formReducer.isSubmitting
-    };
-}
-
-export class QUpload extends React.Component{
+export class QUpload extends Base{
     constructor(props) {
         super(props);
         this.state = {
@@ -50,78 +42,11 @@ export class QUpload extends React.Component{
             }
         }
     }
-    get objectKey() {
-        return this.state.name;
+    handleCancel() { 
+        this.setState({ previewVisible: false });
     }
 
-    get objectPath() {
-        return this.state.path || this.state.name;
-    }
-    getValue(formData){
-        if(this.props.isDynamic) {
-            const dataPosition = this.props.dataPosition;
-            const path = `${dataPosition.objectName}[${dataPosition.index}].${this.objectPath}`;
-            return _.get(formData, path);
-        } else {
-            return _.get(formData, this.objectPath);
-        }
-    }
-    getDynamicKey() {
-        if(this.props.isDynamic) {
-            const dataPosition = this.props.dataPosition;
-            const index = dataPosition.index;
-            return `${this.objectKey}-${index}`;
-        } else {
-            return this.objectKey;
-        }
-    }
-    get Rules(){
-        if(this.isHidden==='none'||this.isDisabled){
-            return [];
-        }else{
-            return this.state.rules;
-        }
-    }
-    get isHidden() {
-        if (!this.state.conditionMap  || this.state.conditionMap.length == 0) {
-            return this.state.hidden ? 'none' : '';
-        } else {
-            let ElementAttribute = this.state.conditionMap.map((item, index)=> {
-                let itemValue = _.get(this.props.formData, item.whichcontrol);
-                switch (item.how) {
-                    case 'equal': {
-                        return item.value === itemValue && item.action === 'hidden' && item.actionValue ? 'none' : '';
-                    }
-                }
-                return '';
-            });
-            return _.includes(ElementAttribute, 'none') ? 'none' : '';
-        }
-    }
-    get isDisabled(){
-        if(!this.state.conditionMap|| this.state.conditionMap.length == 0) {
-            return this.state.disabled;
-        }else {
-            let ElementAttribute = this.state.conditionMap.map((item, index)=> {
-                let itemValue = _.get(this.props.formData, item.whichcontrol);
-                switch (item.how) {
-                    case 'equal': {
-                        return item.value === itemValue && item.action === 'disabled' && item.actionValue;
-                    }
-                    case 'greater': {
-                        return '';
-                    }
-                    case 'less': {
-                        return '';
-                    }
-                }
-            });
-            return _.includes(ElementAttribute, true);
-        }
-    }
-    handleCancel = () => this.setState({ previewVisible: false })
-
-    handlePreview = (file) => {
+    handlePreview(file)  {
         this.setState({
             previewImage: file.url,
             previewVisible: true,
@@ -133,7 +58,7 @@ export class QUpload extends React.Component{
         const isCascadElement = getIsCascadeElement(nextProps.formData,this.props.formData,this.state.conditionMap);
         return currentValue !== nextValue || nextProps.isSubmitting || isCascadElement || !this.state!=nextState;
     }
-    handleChange = ({ file,fileList,event}) => {
+    handleChange(file,fileList,event) {
         let value = [];
         if (fileList && _.isArray(fileList)) {
             fileList.forEach((item, index) => {
@@ -156,10 +81,10 @@ export class QUpload extends React.Component{
             });
             this.props.dispatch(updateFormData(this.objectPath, value));
         }
-    };
+    }
 
     render() {
-        const key = this.getDynamicKey();
+        const key = this.DynamicKey;
         const {getFieldDecorator} = this.props.form;
         const value = this.getValue(this.props.formData);
         const {previewVisible, previewImage, fileList} = this.state;
@@ -237,5 +162,5 @@ export class QUpload extends React.Component{
     }
 }
 QUpload.propTypes = uploadPropType;
-export default connect(mapStateToProps)(QUpload);
+export default connect(MapStateToProps)(QUpload);
 

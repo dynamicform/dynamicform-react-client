@@ -7,7 +7,7 @@ export const textfieldPropTypes = {
         name: string.isRequired,
         path: string.isRequired,
         label: string.isRequired,
-        rules: array.isRequired,
+        //rules: array.isRequired,
     })
 };
 export const buttonPropType={
@@ -22,7 +22,7 @@ export const cascadeSelectPropType={
         path: string.isRequired,
         label: string.isRequired,
         optionDataKey: string.isRequired,
-        rules: array.isRequired,
+        //rules: array.isRequired,
     })
 };
 export const checkBoxGroupPropType={
@@ -31,7 +31,7 @@ export const checkBoxGroupPropType={
         path: string.isRequired,
         label: string.isRequired,
         optionDataKey: string.isRequired,
-        rules: array.isRequired,
+        //rules: array.isRequired,
     })
 };
 export const datePickerPropType={
@@ -39,7 +39,7 @@ export const datePickerPropType={
         name: string.isRequired,
         path: string.isRequired,
         label: string.isRequired,
-        rules: array.isRequired,
+        //rules: array.isRequired,
         format:string.isRequired,
     })
 };
@@ -62,7 +62,7 @@ export const monthPickerPropType={
         name: string.isRequired,
         path: string.isRequired,
         label: string.isRequired,
-        rules: array.isRequired,
+        //rules: array.isRequired,
         format:string.isRequired,
     })
 };
@@ -71,7 +71,7 @@ export const radioGroupPropType={
         name: string.isRequired,
         path: string.isRequired,
         label: string.isRequired,
-        rules: array.isRequired,
+        //rules: array.isRequired,
     })
 };
 export const rangePickerPropType={
@@ -79,7 +79,7 @@ export const rangePickerPropType={
         name: string.isRequired,
         path: string.isRequired,
         label: string.isRequired,
-        rules: array.isRequired,
+        //rules: array.isRequired,
         format:string.isRequired,
     })
 };
@@ -89,7 +89,7 @@ export const selectPropType={
         path: string.isRequired,
         label: string.isRequired,
         optionDataKey:string.isRequierd,
-        rules: array.isRequired,
+        //rules: array.isRequired,
     })
 };
 export const timePickerProType={
@@ -97,7 +97,7 @@ export const timePickerProType={
         name: string.isRequired,
         path: string.isRequired,
         label: string.isRequired,
-        rules: array.isRequired,
+        //rules: array.isRequired,
         format:string.isRequired,
     })
 };
@@ -106,7 +106,7 @@ export const uploadPropType={
         name: string.isRequired,
         path: string.isRequired,
         label: string.isRequired,
-        rules: array.isRequired,
+        //rules: array.isRequired,
         fileType:string.isRequired,
         action:string.isRequired,
         multiple:bool.isRequired,
@@ -125,7 +125,6 @@ export const validationButtonProptype={
 
 export const containerProptypes = {
     definition: shape({
-        viewable: bool.isRequired,
         label: string.isRequired,
         components: array.isRequired
     })

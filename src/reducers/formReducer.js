@@ -30,7 +30,7 @@ const initialState = {
     formData: {},
     formDictionary:{},
     isNewForm: false,
-    isSubmitting: false
+    isSubmitting: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -41,7 +41,7 @@ export default function reducer(state = initialState, action) {
                 formData: {},
                 initFormData: {},
                 formLoadedComplete: (state.formDefinitionLoaded || state.formDataLoaded),
-                isNewForm: true
+                isNewForm: true,
             };
         }
         case LOAD_FORM_DEFINITION_SUCCESSFUL: {
@@ -102,7 +102,7 @@ export default function reducer(state = initialState, action) {
             const value = action.payload.value;
             const dataPosition = action.payload.dataPosition;
             const newFormData = _.cloneDeep(state.formData);
-            const path = `${dataPosition.objectName}[${dataPosition.index}].${key}`;
+            const path =key;// `${dataPosition.objectName}[${dataPosition.index}].${key}`;
             return {
                 ...state,
                 formData: _.set(newFormData, path, value),
@@ -158,13 +158,13 @@ export default function reducer(state = initialState, action) {
             };
         }
         case REMOVE_DYNAMIC_ELEMENT:{
-            //current only can remove last element
-            const newFormData = _.cloneDeep(state.formData);
+            let newFormData = _.cloneDeep(state.formData);
             const key = action.payload.key;
-            newFormData[key].pop();
+            const index = action.payload.index;
+            _.get(newFormData,key).splice(index,1);
             return {
                 ...state,
-                formData: newFormData
+                formData: newFormData,
             };
         }
     }

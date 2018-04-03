@@ -3,11 +3,12 @@
  */
 import React from 'react';
 import {connect} from 'react-redux';
-import {initFormData,initDynamicFormData, updateFormData,updateDynamicFormData, changeFormDefinition} from '../../actions/formAction';
 import {Radio, Input, Form}  from 'antd';
-import {FormItemLayout,getIsCascadeElement} from '../../utility/common';
 import _ from 'lodash';
+import {initFormData,initDynamicFormData, updateFormData,updateDynamicFormData, changeFormDefinition} from '../../actions/formAction';
+import {FormItemLayout,getIsCascadeElement} from '../../utility/common';
 import {radioGroupPropType} from '../../utility/propTypes';
+import Base from './Base';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 
@@ -22,13 +23,15 @@ function mapStateToProps(store) {
     };
 }
 
-export class QRadioGroup extends React.Component {
+export class QRadioGroup extends Base {
     constructor(props) {
         super(props);
         this.state = {
             othervalue:'',
             ...props.definition
         };
+        this.handleOnChange= this.handleOnChange.bind(this);
+        this.other_handleOnChange= this.other_handleOnChange.bind(this);
     }
 
     componentWillMount() {
@@ -54,6 +57,10 @@ export class QRadioGroup extends React.Component {
             //控制联动组件的属性
             // this.props.dispatch(changeFormDefinition(this.getValue(this.props.formData), this.state.target));//发起联动
         }
+        if(this.props.isDynamic) {
+            const dataPosition = this.props.dataPosition;
+            this.props.dispatch(initDynamicFormData(this.objectPath, null, dataPosition));
+        }
     }
     shouldComponentUpdate(nextProps, nextState) {
         let data = _.filter(this.state.components, (item) => {
@@ -69,76 +76,7 @@ export class QRadioGroup extends React.Component {
         //only render when value is changed or form is submitting
         return currentValue !== nextValue || nextProps.isSubmitting  || isCascadElement ;
     }
-    get objectKey() {
-        return this.state.name;
-    }
-
-    get objectPath() {
-        return this.state.path || this.state.name;
-    }
-    getValue(formData){
-        if(this.props.isDynamic) {
-            const dataPosition = this.props.dataPosition;
-            const path = `${dataPosition.objectName}[${dataPosition.index}].${this.objectPath}`;
-            return _.get(formData, path);
-        } else {
-            return _.get(formData, this.objectPath);
-        }
-    }
-    getDynamicKey() {
-        if(this.props.isDynamic) {
-            const dataPosition = this.props.dataPosition;
-            const index = dataPosition.index;
-            return `${this.objectKey}-${index}`;
-        } else {
-            return this.objectKey;
-        }
-    }
-    get Rules(){
-        if(this.isHidden==='none'||this.isDisabled){
-            return [];
-        }else{
-            return this.state.rules;
-        }
-    }
-    get isHidden() {
-        if (!this.state.conditionMap  || this.state.conditionMap.length == 0) {
-            return this.state.hidden ? 'none' : '';
-        } else {
-            let ElementAttribute = this.state.conditionMap.map((item, index)=> {
-                let itemValue = _.get(this.props.formData, item.whichcontrol);
-                switch (item.how) {
-                    case 'equal': {
-                        return item.value === itemValue && item.action === 'hidden' && item.actionValue ? 'none' : '';
-                    }
-                }
-                return '';
-            });
-            return _.includes(ElementAttribute, 'none') ? 'none' : '';
-        }
-    }
-    get isDisabled(){
-        if(!this.state.conditionMap|| this.state.conditionMap.length == 0) {
-            return this.state.disabled;
-        }else {
-            let ElementAttribute = this.state.conditionMap.map((item, index)=> {
-                let itemValue = _.get(this.props.formData, item.whichcontrol);
-                switch (item.how) {
-                    case 'equal': {
-                        return item.value === itemValue && item.action === 'disabled' && item.actionValue;
-                    }
-                    case 'greater': {
-                        return '';
-                    }
-                    case 'less': {
-                        return '';
-                    }
-                }
-            });
-            return _.includes(ElementAttribute, true);
-        }
-    }
-    handleOnChange = (event) => {
+    handleOnChange (event)  {
         const value = event.target.value;
         if(!this.props.isDynamic) {
             this.props.dispatch(updateFormData(this.objectPath, value));
@@ -173,7 +111,7 @@ export class QRadioGroup extends React.Component {
 
     render() {
         const {getFieldDecorator} = this.props.form;
-        const key = this.getDynamicKey();
+        const key = this.DynamicKey;
         const radiovalue = this.getValue(this.props.formData);
         const input = (option) => {
             if (this.state.components != null) {
