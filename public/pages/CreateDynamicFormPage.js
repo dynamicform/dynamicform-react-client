@@ -18,13 +18,20 @@ export default class CreateDynamicFormPage extends React.Component{
         console.log('自定义onSubmit')
     }
     render(){
+        let formDataSetting={
+            isFormDataJson:true,
+            formDataSrc:'',
+            dataPath:'data',
+            formData:{},
+            isNewForm:true
+        }
         return(
             <DynamicForm
                 isUpdate={false}
                 formDefinitionSrc={`http://localhost:3000/api/getdefinition/${this.props.match && this.props.match.params.name}`}
                 submitDataSrc={`http://localhost:3000/api/createformdata`}
-                dataPaht='data'
                 beforeSubmit={this.beforeSubmit}
+                formDataSetting={formDataSetting}
                 onSuccess={this.onSuccess}
                 onError={this.onError}
                 />

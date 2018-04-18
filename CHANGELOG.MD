@@ -70,4 +70,15 @@
     2.修复InputNumber保存值错误
     3.修复DynamicControl加入熟悉path
     4.统一事件绑定语法在constructor构造函数中bind
-   
+### 1.7.4 (2018-04-18) [KangYe](https://github.com/gametheworld)
+    1.修改.vscode文件夹不受git管理
+    2.修复Form组件在接入值时的参数调整可以接受外部传入的fomrData
+        ```javascript
+            let formDataSetting={
+                isFormDataJson:true,//是否是已json传入值
+                formData:{},//json方式传的formData值
+                formDataSrc:'',//URL请求链接
+                dataPath:'data',//请连接响应参数Path   
+                isNewForm:true //是否是创建表单
+            }
+        ```

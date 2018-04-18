@@ -43,3 +43,4 @@ src/data/.DS_Store
 .yarn-error.log
 
 .history/
+.vscode/

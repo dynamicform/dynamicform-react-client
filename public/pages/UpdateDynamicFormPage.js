@@ -13,13 +13,20 @@ export default class UpdateDynamicFormPage extends React.Component{
 //${this.props.match && this.props.match.params.name}
     //${this.props.match && this.props.match.params.id}
     render(){
+        let formDataSetting={
+            isFormDataJson:true,
+            formDataSrc:`http://localhost:3000/api/loadformdataById/${this.props.match && this.props.match.params.id}`,
+            dataPath:'data',
+            formData:{},
+            isNewForm:false
+        }
         return(
             <div>
                 <DynamicForm
                     formDefinitionSrc={`http://localhost:3000/api/getdefinition/${this.props.match && this.props.match.params.name}`}
-                    formDataSrc={`http://localhost:3000/api/loadformdataById/${this.props.match && this.props.match.params.id}`}
+                    formDataSrc={}
                     _id={this.props.match && this.props.match.params.id}
-                    dataPath='data'
+                    formDataSetting={formDataSetting}
                     onSuccess={this.onSuccess}
                     />
             </div>

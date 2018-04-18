@@ -10,7 +10,8 @@ import {
     resetForm,
     submittingForm,
     attachForm,
-    setFormStatus
+    setFormStatus,
+    loadFormDataJson
 } from '../actions/formAction';
 
 import {getElement} from './factories/elementFactory';
@@ -39,24 +40,21 @@ export default class DynamicFormRender extends React.Component {
         //make sure the state is always new
         this.props.dispatch(resetForm());
         const definitionSrc = this.props.formDefinitionSrc;
-        const dataSrc = this.props.formDataSrc;
+        const formDataSetting = this.props.formDataSetting;
         this.props.dispatch(loadFormDefinition(definitionSrc));
         this.props.dispatch(attachForm(this.props.form));
-        if (dataSrc) {
-            this.props.dispatch(loadFormData(dataSrc,this.props.dataPath));
-        } else {
+        if(formDataSetting.isNewForm){
             this.props.dispatch(createNewForm());
+        }else{
+            if(formDataSetting.isFormDataJson){
+                this.props.dispatch(loadFormDataJson(this.props.formData))
+            }else{
+                this.props.dispatch(loadFormData(formDataSetting.dataSrc,formDataSetting.dataPath));
+            }
         }
     }
 
     getComponent(componentDefinition, index) {
-        let value = '';
-        //if the formData is not null means it is old form
-        if (this.props.formDataSrc && this.props.formData) {
-            value = componentDefinition.hasOwnProperty('path') ?
-                _.get(this.props.formData, componentDefinition.path) : componentDefinition.hasOwnProperty('name') ?
-                    _.get(this.props.formData, componentDefinition.name) : '';
-        }
         let formConfig={};
         formConfig.path = `${componentDefinition.name}`;
         return getElement(componentDefinition, index,formConfig,this.props);

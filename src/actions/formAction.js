@@ -83,6 +83,11 @@ export function loadFormData(dataSrc,dataPath) {
         });
     };
 }
+export function loadFormDataJson(data){
+    return function (dispatch){
+        dispatch({type: LOAD_FORM_DATA_SUCCESSFUL, payload: data})
+    }
+}
 
 export function updateFormData(key, value) {
     return (dispatch) => {
