@@ -47,7 +47,7 @@ export default class DynamicFormRender extends React.Component {
             this.props.dispatch(createNewForm());
         }else{
             if(formDataSetting.isFormDataJson){
-                this.props.dispatch(loadFormDataJson(this.props.formData))
+                this.props.dispatch(loadFormDataJson(formDataSetting.formData));
             }else{
                 this.props.dispatch(loadFormData(formDataSetting.dataSrc,formDataSetting.dataPath));
             }
