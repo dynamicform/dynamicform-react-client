@@ -82,3 +82,5 @@
                 isNewForm:true //是否是创建表单
             }
         ```
+### 1.7.5 (2018-05-25) [Shawn](https://github.com/xiangxiong)
+    1、修改DynamicFormRender.js 文件,将数据回填属性修改为formDataSetting.formData.
